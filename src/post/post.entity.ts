@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { Comment } from 'src/comment/comment.entity';
 
 @Entity()
 export class Post {
@@ -11,5 +12,8 @@ export class Post {
 
   @Column({ length: 1000 })
   content: string;
+
+  @OneToMany(type => Comment, comment => comment.post, { eager: true })
+  comments: Comment[];
 
 }

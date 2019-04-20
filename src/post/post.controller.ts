@@ -10,22 +10,22 @@ export class PostController {
     ) {}
 
   @Get()
-  async findAll(): Promise<Post[]> {
+  findAll(): Promise<Post[]> {
     return this.postService.getPosts();
   }
 
   @PostHTTP()
-  async registerPost(@Body() post: Post) {
+  registerPost(@Body() post: Post) {
     return this.postService.registerPost(post);
   }
 
   @Patch(':id')
-  async updatePost(@Param() { id }: {id: number}, @Body()post: Partial<Post>) {
+  updatePost(@Param() { id }: {id: number}, @Body()post: Partial<Post>) {
     return this.postService.updatePost(id, post);
   }
 
   @Delete(':id')
-  async deletePost(@Param() { id }: {id: number}) {
+  deletePost(@Param() { id }: {id: number}) {
     return this.postService.deletePost(id);
   }
 

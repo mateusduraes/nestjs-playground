@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import { Post } from 'src/post/post.entity';
 
 @Entity()
 export class Comment {
@@ -8,5 +9,8 @@ export class Comment {
 
   @Column({ length: 200 })
   content: string;
+
+  @ManyToOne(type => Post, post => post.comments, { nullable: false })
+  post: Post;
 
 }

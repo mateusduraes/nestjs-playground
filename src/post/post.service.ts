@@ -11,11 +11,11 @@ export class PostService {
     private readonly postRepository: Repository<Post>,
   ) {}
 
-  async getPosts(): Promise<Post[]> {
+  getPosts(): Promise<Post[]> {
     return this.postRepository.find();
   }
 
-  async registerPost(post: Post): Promise<Post> {
+  registerPost(post: Post): Promise<Post> {
     return this.postRepository.save(post);
   }
 
