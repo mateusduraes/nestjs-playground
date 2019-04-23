@@ -23,9 +23,10 @@ export class PostService {
 
   async registerPost(post: Post): Promise<Post> {
     if (post.tags && post.tags.length) {
-      const tags = await this.tagRepository.findByIds(post.tags);      
+      const tags = await this.tagRepository.findByIds(post.tags);
       post.tags = tags;
     }
+
     post.author = await this.userRepository.findOne(post.author);
     return this.postRepository.save(post);
   }
