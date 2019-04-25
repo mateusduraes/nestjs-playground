@@ -24,4 +24,9 @@ export class UserController {
     return this.userService.update(id, user);
   }
 
+  @Post('login')
+  async login(@Body() user): Promise<{user: User, token: string}> {
+    return this.userService.login(user);
+  }
+
 }
